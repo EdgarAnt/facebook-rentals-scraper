@@ -31,7 +31,7 @@ Bot en Node.js que rastrea publicaciones de renta en grupos de Facebook y en Mar
 
 ```bash
 # 1. Clona el repositorio
-git clone https://github.com/TU_USUARIO/bot-rentas-cdmx.git
+git clone https://github.com/EdgarAnt/bot-rentas-cdmx.git
 cd bot-rentas-cdmx
 
 # 2. Instala las dependencias
