@@ -1,6 +1,8 @@
 # 🏠 Facebook Rentals Scraper
 
-A Node.js bot that scrapes rental listings from Facebook groups and Marketplace (Mexico City) using [Playwright](https://playwright.dev/). It opens a real browser, waits for you to log in to Facebook manually, scrolls through posts, filters by price and area, and generates a **web interface (`resultados.html`)** with filterable cards to review the rentals it found.
+A Node.js bot that scrapes rental listings from Facebook groups and Marketplace using [Playwright](https://playwright.dev/). It opens a real browser, waits for you to log in to Facebook manually, scrolls through posts, filters by price and area, and generates a **web interface (`resultados.html`)** with filterable cards to review the rentals it found.
+
+> 📍 **The listings are focused on the Santa Fe area of Mexico City** (including nearby neighborhoods such as Memetla). You can change the target groups and search area in `config.js` and `main.js`.
 
 ---
 
@@ -27,23 +29,25 @@ A Node.js bot that scrapes rental listings from Facebook groups and Marketplace 
 
 ---
 
-## 🚀 Installation
+## ▶️ Usage
+
+### Step 1 — Set up (first time only)
+
+Open your terminal and run these commands one by one:
 
 ```bash
-# 1. Clone the repository
 git clone https://github.com/EdgarAnt/facebook-rentals-scraper.git
 cd facebook-rentals-scraper
-
-# 2. Install dependencies
 npm install
-
-# 3. Install the Playwright browser (first time only)
 npx playwright install chromium
 ```
 
----
+- `git clone` → downloads the project
+- `cd` → enters the folder
+- `npm install` → installs the dependencies
+- `npx playwright install chromium` → installs the browser the bot uses
 
-## ▶️ Usage
+### Step 2 — Run the bot
 
 ```bash
 node main.js
@@ -51,15 +55,29 @@ node main.js
 
 When you run it:
 
-1. A visible Chrome window opens on Facebook.
+1. A visible **Chrome** window opens on Facebook.
 2. In the terminal you'll see: *"Inicia sesión en Facebook y cuando estés listo presiona Enter..."* (Log in to Facebook and press Enter when ready).
 3. **Log in** to Facebook inside that window (only the first time; afterwards the session is saved).
 4. Go back to the terminal and **press Enter**.
-5. The bot navigates through each group and Marketplace, scrolling and collecting posts.
+5. The bot goes through each group and Marketplace, scrolling and collecting posts.
 6. When it finishes, it generates `resultados.html` and **opens it automatically** in your browser.
 7. Press Enter again in the terminal to close the browser.
 
-> 💡 The session is saved in `./fb-session/`. **Do not delete that folder** unless you want to log in from scratch again.
+### Step 3 — Configure (optional)
+
+Open `config.js` to tune the search:
+
+| What | How |
+|---|---|
+| **Groups** to scrape | Edit the `GRUPOS` list (name + URL) |
+| **Maximum price** | Change `precio_max: 50000` |
+| **Areas / neighborhoods** | Fill in `zonas: []`, e.g. `zonas: ["Santa Fe", "Memetla"]` |
+| **How many posts** | Raise or lower `SCROLLS_POR_GRUPO: 20` |
+
+> 💡 Notes:
+> - The first run takes longer (it downloads the browser). After that it's fast.
+> - The session is saved in `./fb-session/`. **Do not delete that folder** unless you want to log in from scratch again.
+> - The auto-open command only works on **macOS**. On Windows/Linux, open `resultados.html` manually in your browser.
 
 ---
 
