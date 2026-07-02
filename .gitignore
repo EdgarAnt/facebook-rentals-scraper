@@ -1,0 +1,12 @@
+# Dependencias
+node_modules/
+
+# Sesión de Facebook (contiene cookies/login — NUNCA subir)
+fb-session/
+
+# Resultados generados
+resultados.html
+
+# Sistema
+.DS_Store
+*.log
